@@ -80,10 +80,11 @@ describe('ControllerBuilder', function() {
       ];
       var controller = new ControllerBuilder('controller', properties, []);
       var result = controller._getProperties(properties);
-      result.should.equal(`$scope.hobbies = ['football', 'basket'];`);
+      result.should.equal(`$scope.hobbies = ['football', 'basket'];
+    $scope.selectedhobbies = $scope.hobbies[0];`);
     });
 
-    it('Should return $scope.hobbies = ["football", "basket"]', function() {
+    it('Should return $scope.hola $scope.name $scope.age $scope.married $scope.hobbies = ["football", "basket"] $scope.selectedhobbies = $scope.hobbies[0];', function() {
       var properties = [
         {
           name: 'hola',
@@ -122,7 +123,8 @@ describe('ControllerBuilder', function() {
     $scope.name = 'sergio';
     $scope.age = 24;
     $scope.married = true;
-    $scope.hobbies = ['football', 'basket'];`);
+    $scope.hobbies = ['football', 'basket'];
+    $scope.selectedhobbies = $scope.hobbies[0];`);
     });
 
   });

@@ -46,7 +46,22 @@ describe('ViewBuilder', function() {
 <input type="checkbox" ng-model="married"> married`);
   });
 
-  it('_generateFields() should return input type checkbox, text and number', function() {
+  it('_generateFields() should return select', function() {
+    var properties = [
+      {
+        name: 'hobbies',
+        type: 'array',
+        value: ['football', 'basket', 'music', 'games'],
+        track: null
+      }
+    ];
+    var viewBuilder = new ViewBuilder('template', properties);
+    var result = viewBuilder._generateFields(properties);
+    result.should.equal(`
+<select ng-model="selectedhobbies" ng-options="auxhobbies for auxhobbies in hobbies"></select>`);
+  });
+
+  it('_generateFields() should return input type checkbox, text, number and select', function() {
     var properties = [
       {
         name: 'married',
@@ -65,6 +80,12 @@ describe('ViewBuilder', function() {
         type: 'number',
         value: 23,
         track: null
+      },
+      {
+        name: 'hobbies',
+        type: 'array',
+        value: ['football', 'basket', 'music', 'games'],
+        track: null
       }
     ];
     var viewBuilder = new ViewBuilder('template', properties);
@@ -72,6 +93,7 @@ describe('ViewBuilder', function() {
     result.should.equal(`
 <input type="checkbox" ng-model="married"> married
 <input type="text" ng-model="name">
-<input type="number" ng-model="age">`);
+<input type="number" ng-model="age">
+<select ng-model="selectedhobbies" ng-options="auxhobbies for auxhobbies in hobbies"></select>`);
   });
 });

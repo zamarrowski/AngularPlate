@@ -26,6 +26,10 @@ class ViewBuilder {
         template+= `
 <input type="checkbox" ng-model="${property.name}"> ${property.name}`;
       }
+      else if (property.type == 'array') {
+        template+= `
+<select ng-model="selected${property.name}" ng-options="aux${property.name} for aux${property.name} in ${property.name}"></select>`;
+      }
     });
 
     return template;

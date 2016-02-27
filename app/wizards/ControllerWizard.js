@@ -16,13 +16,14 @@ class ControllerWizard {
           required: true
         },
         properties: {
-          description: 'Write properties for your controller separated by # (name:type:value:track) \n'
+          description: 'Write properties for your controller separated by # (name:type:value) \n'
         },
         dependencies: {
           description: 'Write dependencies for your controller separated by , : ($scope already added) \n'
         },
         nameView: {
-          description: 'Name for view: '
+          description: 'Name for view: ',
+          required: true
         }
       }
     };

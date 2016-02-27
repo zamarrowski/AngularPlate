@@ -49,9 +49,11 @@ class ControllerBuilder {
       else if(property.type == 'array') {
         if (iterations > 0) {
           properties += `
-    $scope.${property.name} = [${JavaScriptGenerator.getQuotedPropertiesFromArray(property.value)}];`;
+    $scope.${property.name} = [${JavaScriptGenerator.getQuotedPropertiesFromArray(property.value)}];
+    $scope.selected${property.name} = $scope.${property.name}[0];`;
         } else {
-          properties += `$scope.${property.name} = [${JavaScriptGenerator.getQuotedPropertiesFromArray(property.value)}];`;
+          properties += `$scope.${property.name} = [${JavaScriptGenerator.getQuotedPropertiesFromArray(property.value)}];
+    $scope.selected${property.name} = $scope.${property.name}[0];`;
         }
       }
       iterations++;
