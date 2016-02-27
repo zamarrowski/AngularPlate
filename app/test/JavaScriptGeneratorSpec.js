@@ -1,13 +1,12 @@
-var FactoryBuilder = require('./../builders/FactoryBuilder.js');
-var should = require('should');
+var JavaScriptGenerator = require('./../common/JavaScriptGenerator.js');
 
-describe('FactoryBuilder', function() {
+describe('JavaScriptGenerator', function() {
+
   describe('_getProperties()', function() {
 
     it('Should generate "" if factory don´t have properties', function() {
       var properties = [];
-      var factory = new FactoryBuilder('pruebaFactory', properties);
-      var result = factory._getProperties();
+      var result = JavaScriptGenerator.getProperties(properties);
       result.should.equal("");
     });
 
@@ -18,8 +17,7 @@ describe('FactoryBuilder', function() {
           value: null
         }
       ];
-      var factory = new FactoryBuilder('pruebaFactory', properties);
-      var result = factory._getProperties();
+      var result = JavaScriptGenerator.getProperties(properties);
       result.should.equal(`name: null,`);
     });
 
@@ -31,8 +29,7 @@ describe('FactoryBuilder', function() {
           type: 'string'
         }
       ];
-      var factory = new FactoryBuilder('pruebaFactory', properties);
-      var result = factory._getProperties();
+      var result = JavaScriptGenerator.getProperties(properties);
       result.should.equal(`name: 'sergio',`);
     });
 
@@ -44,8 +41,7 @@ describe('FactoryBuilder', function() {
           type: 'number'
         }
       ];
-      var factory = new FactoryBuilder('pruebaFactory', properties);
-      var result = factory._getProperties();
+      var result = JavaScriptGenerator.getProperties(properties);
       result.should.equal(`age: 24,`);
     });
 
@@ -57,8 +53,7 @@ describe('FactoryBuilder', function() {
           type: 'boolean'
         }
       ];
-      var factory = new FactoryBuilder('pruebaFactory', properties);
-      var result = factory._getProperties();
+      var result = JavaScriptGenerator.getProperties(properties);
       result.should.equal(`married: false,`);
     });
 
@@ -70,8 +65,7 @@ describe('FactoryBuilder', function() {
           type: 'array'
         }
       ];
-      var factory = new FactoryBuilder('pruebaFactory', properties);
-      var result = factory._getProperties();
+      var result = JavaScriptGenerator.getProperties(properties);
       result.should.equal(`hobbies: ['football', 'hobbies'],`);
     });
 
@@ -98,8 +92,7 @@ describe('FactoryBuilder', function() {
           type: 'array'
         }
       ];
-      var factory = new FactoryBuilder('pruebaFactory', properties);
-      var result = factory._getProperties();
+      var result = JavaScriptGenerator.getProperties(properties);
       result.should.equal(`name: 'sergio',
       firstName: 'zamarro',
       married: false,
@@ -112,33 +105,29 @@ describe('FactoryBuilder', function() {
 
     it('Should return "$scope, $http"', function() {
       var dependencies = ['$scope', '$http'];
-      var factory = new FactoryBuilder('pruebaFactory', [], dependencies);
-      var result = factory._getQuotedDependencies();
+      var result = JavaScriptGenerator.getQuotedDependencies(dependencies);
       result.should.equal("'$scope', '$http'");
     });
 
     it('Should return "" if factory don´t have dependencies', function() {
       var dependencies = [];
-      var factory = new FactoryBuilder('pruebaFactory', [], dependencies);
-      var result = factory._getQuotedDependencies();
+      var result = JavaScriptGenerator.getQuotedDependencies(dependencies);
       result.should.equal("");
     });
 
   });
 
-  describe('_getDependencies()', function() {
+  describe('getDependencies()', function() {
 
     it('Should return $scope, $http', function() {
       var dependencies = ['$scope', '$http'];
-      var factory = new FactoryBuilder('pruebaFactory', [], dependencies);
-      var result = factory._getDependencies();
+      var result = JavaScriptGenerator.getDependencies(dependencies);
       result.should.equal("$scope, $http");
     });
 
     it('Should return "" if factory don´t have dependencies', function() {
       var dependencies = [];
-      var factory = new FactoryBuilder('pruebaFactory', [], dependencies);
-      var result = factory._getDependencies();
+      var result = JavaScriptGenerator.getDependencies(dependencies);
       result.should.equal("");
     });
 
