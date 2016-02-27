@@ -2,6 +2,7 @@
 let prompt = require('prompt');
 let ControllerBuilder = require('./../builders/ControllerBuilder');
 let WizardParser = require('./../common/WizardParser.js');
+let ViewBuilder = require('./../builders/ViewBuilder.js');
 
 class ControllerWizard {
   constructor() {}
@@ -19,6 +20,9 @@ class ControllerWizard {
         },
         dependencies: {
           description: 'Write dependencies for your controller separated by , : ($scope already added) \n'
+        },
+        nameView: {
+          description: 'Name for view: '
         }
       }
     };
@@ -29,6 +33,8 @@ class ControllerWizard {
       let dependencies = WizardParser.getDependencies(result.dependencies);
       let controller = new ControllerBuilder(result.name, properties, dependencies);
       controller.createTemplate();
+      let view = new ViewBuilder(result.nameView, properties);
+      view.createTemplate();
     });
   }
 }
