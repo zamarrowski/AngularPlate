@@ -18,5 +18,4 @@ Now you can create:
 You can indicate:
  * Name
  * Attributes: separated by # (name:type:value). Data types allowed: String, Number, Boolean and Array. Example: firstName:string:sergio#age:number:23
- * Dependencies (in progress)
-  
+ * Dependencies: separated by commas. Example: $http,$q

@@ -15,9 +15,9 @@ class FactoryBuilder {
   _getTemplate() {
     let template = `(function() {
   app.factory('${this._getFactorPascalCamelCaseName(this.factoryName)}', ${this.factoryName});
-  ${this.factoryName}.$inject = [];
-  function ${this.factoryName}() {
-    let ${this.factoryName} = {
+  ${this.factoryName}.$inject = [${this._getQuotedDependencies()}];
+  function ${this.factoryName}(${this._getDependencies()}) {
+    var ${this.factoryName} = {
       ${this._getProperties()}
     };
 
@@ -77,6 +77,36 @@ class FactoryBuilder {
 
   _getFactorPascalCamelCaseName(name) {
       return name[0].toUpperCase() + name.substr(1);
+  }
+
+  _getQuotedDependencies() {
+    var quotedDependencies = "";
+    var iterations = 0;
+    this.dependencies.map((dependency) => {
+      if (iterations != this.dependencies.length - 1) {
+        quotedDependencies+= `'${dependency}', `;
+      } else {
+        quotedDependencies+= `'${dependency}'`;
+      }
+      iterations++;
+    });
+
+    return quotedDependencies;
+  }
+
+  _getDependencies() {
+    var dependencies = '';
+    var iterations = 0;
+    this.dependencies.map((dependency) => {
+      if (iterations != this.dependencies.length - 1) {
+        dependencies+= `${dependency}, `;
+      } else {
+        dependencies+= `${dependency}`;
+      }
+      iterations++;
+    });
+
+    return dependencies;
   }
 
 }

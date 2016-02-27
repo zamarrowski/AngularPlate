@@ -44,6 +44,13 @@ describe('FactoryWizard', function() {
   });
 
   describe('_getProperties()', function() {
+
+    it('Should return empty array if not have properties', function() {
+      var propertiesInput = '';
+      var result = FactoryWizard._getProperties(propertiesInput);
+      result.length.should.equal(0);
+    });
+
     it('Should return array with this properties {name: null, firstName: null}', function() {
       var propertiesInput = 'name:string#firstName:string';
       var result = FactoryWizard._getProperties(propertiesInput);
@@ -98,6 +105,22 @@ describe('FactoryWizard', function() {
       should.equal(result[2].value[1], 'basket');
     });
 
+  });
+
+  describe('_getDependencies()', function() {
+
+    it('Should return empty array if not have dependencies', function() {
+      var dependencies = '';
+      var result = FactoryWizard._getDependencies(dependencies);
+      result.length.should.equal(0);
+    });
+
+    it('Should return a ["$scope", "$http"]', function() {
+      var dependencies = '$scope,$http';
+      var result = FactoryWizard._getDependencies(dependencies);
+      result[0].should.equal('$scope');
+      result[1].should.equal('$http');
+    });
   });
 
 });
