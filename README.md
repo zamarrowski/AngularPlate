@@ -1,9 +1,8 @@
 # AngularPlate
-Scaffolding for AngularJS
+Scaffolding for AngularJS. Create Controllers, Factories and Views from command line.
 
 # Install dependencies
 npm install
-
 # Run:
 ```
 node app.js
@@ -50,7 +49,7 @@ Now you can create:
  * Dependencies: separated by commas. Example: $http,$q, ($scope already added).
  * Name of view (Required)
 ### 2.1 Example
- ```
+```
 prompt: Enter a name for your controller:  WineController
 
 prompt: Write properties for your controller separated by # (name:type:value) : name:string#price:number
@@ -58,7 +57,7 @@ prompt: Write properties for your controller separated by # (name:type:value) : 
 prompt: Write dependencies for your controller separated by , ($scope already added): AnotherService
 
 prompt: Name for view: :  WineView
- ```
+```
 This generate a .js and .html:
 ```
 //WineController.js
