@@ -2,11 +2,20 @@
 # AngularPlate
 Scaffolding for AngularJS. Create Controllers, Factories and Views from command line.
 
+## Install:
+```
+npm install angularplate
+```
+
 # Install dependencies
 npm install
 # Run:
 ```
 node app.js
+```
+# Test
+```
+npm test
 ```
 
 # How to use:
