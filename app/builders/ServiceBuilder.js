@@ -9,7 +9,7 @@ class ServiceBuilder {
   }
 
   createTemplate() {
-    writer.writeTemplate(`${this.name}.js`, this._getTemplate());
+    writer.writeTemplate(`${this.name}Service.js`, this._getTemplate());
   }
 
   _getTemplate() {
