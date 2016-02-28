@@ -16,7 +16,7 @@ class ViewBuilder {
   }
 
   _generateFields(properties) {
-    var template = '';
+    let template = '';
     properties.map((property) => {
       if (property.type == 'string' || property.type == 'number') {
         template+= `
