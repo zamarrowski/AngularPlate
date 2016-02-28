@@ -1,11 +1,32 @@
 {
-  "dependencies": {
-    "prompt": "latest",
-    "mocha": "latest",
-    "should": "latest"
+  "name": "angularplate",
+  "description": "AngularPlate Scaffolding for AngularJS. Create Controllers, Factories and Views from command line.",
+  "version": "0.0.3",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
   },
   "scripts": {
     "test": "mocha",
     "start": "node app.js"
-  }
+  },
+  "devDependencies": {
+    "prompt": "latest",
+    "mocha": "latest",
+    "should": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zamarrowski/AngularPlate.git"
+  },
+  "keywords": [
+    "scaffolding",
+    "angularjs"
+  ],
+  "author": "@zamarrowski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zamarrowski/AngularPlate/issues"
+  },
+  "homepage": "https://github.com/zamarrowski/AngularPlate#readme"
 }
