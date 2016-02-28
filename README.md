@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/zamarrowski/AngularPlate.svg?branch=master)](https://travis-ci.org/zamarrowski/AngularPlate)
 # AngularPlate
 Scaffolding for AngularJS. Create Controllers, Factories and Views from command line.
 
