@@ -1,5 +1,10 @@
 {
   "dependencies": {
-    "prompt": "latest"
+    "prompt": "latest",
+    "mocha": "latest"
+  },
+  "scripts": {
+    "test": "mocha",
+    "start": "node app.js"
   }
 }
