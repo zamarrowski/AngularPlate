@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "prompt": "latest",
-    "mocha": "latest"
+    "mocha": "latest",
+    "should": "latest"
   },
   "scripts": {
     "test": "mocha",
