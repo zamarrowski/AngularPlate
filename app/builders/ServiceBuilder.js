@@ -14,12 +14,11 @@ class ServiceBuilder {
 
   _getTemplate() {
     let template = `(function() {
-  app.factory('${JavaScriptGenerator.getFactorPascalCamelCaseName(this.name)}Services', ${this.name}Services);
+  app.service('${JavaScriptGenerator.getPascalCamelCaseName(this.name)}Services', ${this.name}Services);
   ${this.name}Services.$inject = ['$http', '$q'];
   function ${this.name}Services($http, $q) {
-    var self = {};
 
-    self.get${JavaScriptGenerator.getFactorPascalCamelCaseName(this.name)} = function(id) {
+    this.get${JavaScriptGenerator.getPascalCamelCaseName(this.name)} = function(id) {
       var deferred = $q.defer();
       var url = '${this.url}/' + id;
 
@@ -30,7 +29,7 @@ class ServiceBuilder {
       return deferred.promise;
     };
 
-    self.create${JavaScriptGenerator.getFactorPascalCamelCaseName(this.name)} = function(${this.name}) {
+    this.create${JavaScriptGenerator.getPascalCamelCaseName(this.name)} = function(${this.name}) {
       var deferred = $q.defer();
       var url = '${this.url}';
 
@@ -41,7 +40,7 @@ class ServiceBuilder {
       return deferred.promise;
     };
 
-    self.update${JavaScriptGenerator.getFactorPascalCamelCaseName(this.name)} = function(${this.name}) {
+    this.update${JavaScriptGenerator.getPascalCamelCaseName(this.name)} = function(${this.name}) {
       var deferred = $q.defer();
       var url = '${this.url}';
 
@@ -52,7 +51,7 @@ class ServiceBuilder {
       return deferred.promise;
     };
 
-    self.delete${JavaScriptGenerator.getFactorPascalCamelCaseName(this.name)} = function(id) {
+    this.delete${JavaScriptGenerator.getPascalCamelCaseName(this.name)} = function(id) {
       var deferred = $q.defer();
       var url = '${this.url}' + id;
 
@@ -63,7 +62,7 @@ class ServiceBuilder {
       return deferred.promise;
     };
 
-    return self;
+
  }
 })();`;
 

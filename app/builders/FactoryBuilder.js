@@ -15,7 +15,7 @@ class FactoryBuilder {
 
   _getTemplate() {
     let template = `(function() {
-  app.factory('${JavaScriptGenerator.getFactorPascalCamelCaseName(this.factoryName)}', ${this.factoryName});
+  app.factory('${JavaScriptGenerator.getPascalCamelCaseName(this.factoryName)}', ${this.factoryName});
   ${this.factoryName}.$inject = [${JavaScriptGenerator.getQuotedDependencies(this.dependencies)}];
   function ${this.factoryName}(${JavaScriptGenerator.getDependencies(this.dependencies)}) {
     var ${this.factoryName} = {

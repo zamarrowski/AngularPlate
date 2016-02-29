@@ -3,7 +3,7 @@
 class JavaScriptGenerator {
   constructor() {}
 
-  getFactorPascalCamelCaseName(name) {
+  getPascalCamelCaseName(name) {
       return name[0].toUpperCase() + name.substr(1);
   }
 

@@ -16,7 +16,7 @@ class ControllerBuilder {
 
   _getTemplate() {
     let template = `(function() {
-  app.controller('${JavaScriptGenerator.getFactorPascalCamelCaseName(this.controllerName)}', ${this.controllerName});
+  app.controller('${JavaScriptGenerator.getPascalCamelCaseName(this.controllerName)}', ${this.controllerName});
   ${this.controllerName}.$inject = [${JavaScriptGenerator.getQuotedDependencies(this.dependencies)}];
   function ${this.controllerName}(${JavaScriptGenerator.getDependencies(this.dependencies)}) {
     ${this._getProperties(this.propertyList)}

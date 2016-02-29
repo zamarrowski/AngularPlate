@@ -11,12 +11,11 @@ describe('ServiceBuilder', function() {
       var service = new ServiceBuilder(config.name, config.url, config.crudType);
       var result = service._getTemplate();
       result.should.equal(`(function() {
-  app.factory('WineServices', wineServices);
+  app.service('WineServices', wineServices);
   wineServices.$inject = ['$http', '$q'];
   function wineServices($http, $q) {
-    var self = {};
 
-    self.getWine = function(id) {
+    this.getWine = function(id) {
       var deferred = $q.defer();
       var url = 'http://localhost:8090/api/wine/' + id;
 
@@ -27,7 +26,7 @@ describe('ServiceBuilder', function() {
       return deferred.promise;
     };
 
-    self.createWine = function(wine) {
+    this.createWine = function(wine) {
       var deferred = $q.defer();
       var url = 'http://localhost:8090/api/wine';
 
@@ -38,7 +37,7 @@ describe('ServiceBuilder', function() {
       return deferred.promise;
     };
 
-    self.updateWine = function(wine) {
+    this.updateWine = function(wine) {
       var deferred = $q.defer();
       var url = 'http://localhost:8090/api/wine';
 
@@ -49,7 +48,7 @@ describe('ServiceBuilder', function() {
       return deferred.promise;
     };
 
-    self.deleteWine = function(id) {
+    this.deleteWine = function(id) {
       var deferred = $q.defer();
       var url = 'http://localhost:8090/api/wine' + id;
 
@@ -60,7 +59,7 @@ describe('ServiceBuilder', function() {
       return deferred.promise;
     };
 
-    return self;
+
  }
 })();`);
     });
