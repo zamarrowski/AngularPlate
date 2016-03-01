@@ -24,6 +24,9 @@ class ControllerWizard {
         nameView: {
           description: 'Name for view: ',
           required: true
+        },
+        frameworkStyle: {
+          description: 'Framework style: \n 1. None 2. Bootstrap'
         }
       }
     };
@@ -34,7 +37,7 @@ class ControllerWizard {
       let dependencies = WizardParser.getDependencies(result.dependencies);
       let controller = new ControllerBuilder(result.name, properties, dependencies);
       controller.createTemplate();
-      let view = new ViewBuilder(result.nameView, properties);
+      let view = new ViewBuilder(result.nameView, properties, result.frameworkStyle);
       view.createTemplate();
     });
   }
