@@ -26,7 +26,7 @@ class ControllerWizard {
           required: true
         },
         frameworkStyle: {
-          description: 'Framework style: \n 1. None 2. Bootstrap'
+          description: 'Framework style: \n 1. None 2. Bootstrap 3. Angular Material'
         }
       }
     };

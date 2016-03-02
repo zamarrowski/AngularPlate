@@ -237,4 +237,131 @@ describe('ViewBuilder', function() {
   </div>
 </div>`);
   });
+
+  it('_generateFields() should return input type text with angular material style if framework style is 3', function() {
+    var properties = [
+      {
+        name: 'name',
+        type: 'string',
+        value: 'sergio',
+        track: null
+      }
+    ];
+    var viewBuilder = new ViewBuilder('template', properties, 3);
+    var result = viewBuilder._generateFields(properties, 3);
+    result.should.equal(`
+<md-input-container>
+  <label>Name</label>
+  <input type="text" ng-model="name">
+</md-input-container>`);
+  });
+
+  it('_generateFields() should return input type number with angular material style if framework style is 3', function() {
+    var properties = [
+      {
+        name: 'age',
+        type: 'number',
+        value: '13',
+        track: null
+      }
+    ];
+    var viewBuilder = new ViewBuilder('template', properties, 3);
+    var result = viewBuilder._generateFields(properties, 3);
+    result.should.equal(`
+<md-input-container>
+  <label>Age</label>
+  <input type="number" ng-model="age">
+</md-input-container>`);
+  });
+
+  it('_generateFields() should return input type checkbox with angular material style if framework style is 3', function() {
+    var properties = [
+      {
+        name: 'married',
+        type: 'boolean',
+        value: false,
+        track: null
+      }
+    ];
+    var viewBuilder = new ViewBuilder('template', properties, 3);
+    var result = viewBuilder._generateFields(properties, 3);
+    result.should.equal(`
+<md-checkbox ng-model="married">
+  Married
+</md-checkbox>`);
+  });
+
+  it('_generateFields() should return select with angular material style if framework style is 3', function() {
+    var properties = [
+      {
+        name: 'hobbies',
+        type: 'array',
+        value: ['football', 'basket', 'music', 'games'],
+        track: null
+      }
+    ];
+    var viewBuilder = new ViewBuilder('template', properties, 3);
+    var result = viewBuilder._generateFields(properties, 3);
+    result.should.equal(`
+<md-input-container>
+  <label>Hobbies</label>
+  <md-select ng-model="selectedhobbies">
+    <md-option ng-repeat="auxhobbies in hobbies" value="{{auxhobbies}}">
+      {{auxhobbies}}
+    </md-option>
+  </md-select>
+</md-input-container>`);
+  });
+
+  it('_generateFields() should return input type checkbox, text, number and select with bootstrap styles if framework style is 2', function() {
+    var properties = [
+      {
+        name: 'married',
+        type: 'boolean',
+        value: false,
+        track: null
+      },
+      {
+        name: 'name',
+        type: 'string',
+        value: 'sergio',
+        track: null
+      },
+      {
+        name: 'age',
+        type: 'number',
+        value: 23,
+        track: null
+      },
+      {
+        name: 'hobbies',
+        type: 'array',
+        value: ['football', 'basket', 'music', 'games'],
+        track: null
+      }
+    ];
+    var viewBuilder = new ViewBuilder('template', properties, 3);
+    var result = viewBuilder._generateFields(properties, 3);
+    result.should.equal(`
+<md-checkbox ng-model="married">
+  Married
+</md-checkbox>
+<md-input-container>
+  <label>Name</label>
+  <input type="text" ng-model="name">
+</md-input-container>
+<md-input-container>
+  <label>Age</label>
+  <input type="number" ng-model="age">
+</md-input-container>
+<md-input-container>
+  <label>Hobbies</label>
+  <md-select ng-model="selectedhobbies">
+    <md-option ng-repeat="auxhobbies in hobbies" value="{{auxhobbies}}">
+      {{auxhobbies}}
+    </md-option>
+  </md-select>
+</md-input-container>`);
+  });
+
 });

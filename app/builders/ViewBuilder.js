@@ -22,6 +22,8 @@ class ViewBuilder {
       return this._getNoneStyleInputFields(properties);
     } else if (frameworkStyle == 2) {
       return this._getBootstrapInputFields(properties);
+    } else if(frameworkStyle == 3) {
+      return this._getAngularMaterialInputFields(properties);
     }
   }
 
@@ -76,6 +78,38 @@ class ViewBuilder {
     <select ng-model="selected${property.name}" class="form-control" ng-options="aux${property.name} for aux${property.name} in ${property.name}"></select>
   </div>
 </div>`;
+      }
+    });
+
+    return template;
+  }
+
+  _getAngularMaterialInputFields(properties) {
+    let template = '';
+    properties.map((property) => {
+      if (property.type == 'string' || property.type == 'number') {
+        template+= `
+<md-input-container>
+  <label>${JavaScriptGenerator.getPascalCamelCaseName(property.name)}</label>
+  <input type="${property.type == 'string' ? 'text' : 'number'}" ng-model="${property.name}">
+</md-input-container>`;
+      }
+      else if (property.type == 'boolean') {
+        template+= `
+<md-checkbox ng-model="${property.name}">
+  ${JavaScriptGenerator.getPascalCamelCaseName(property.name)}
+</md-checkbox>`;
+      }
+      else if (property.type == 'array') {
+        template+= `
+<md-input-container>
+  <label>${JavaScriptGenerator.getPascalCamelCaseName(property.name)}</label>
+  <md-select ng-model="selected${property.name}">
+    <md-option ng-repeat="aux${property.name} in ${property.name}" value="{{aux${property.name}}}">
+      {{aux${property.name}}}
+    </md-option>
+  </md-select>
+</md-input-container>`;
       }
     });
 
