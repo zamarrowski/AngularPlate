@@ -1,5 +1,6 @@
 'use strict';
 let prompt = require('prompt');
+let colors = require("colors/safe");
 let ControllerBuilder = require('./../builders/ControllerBuilder');
 let WizardParser = require('./../common/WizardParser.js');
 let ViewBuilder = require('./../builders/ViewBuilder.js');
@@ -11,22 +12,23 @@ class ControllerWizard {
     let schema = {
       properties: {
         name: {
-          description: 'Enter a name for your controller',
-          message: 'Name of controller is required',
+          description: colors.green('Enter a name for your controller'),
+          message: colors.red('Name of controller is required'),
           required: true
         },
         properties: {
-          description: 'Write properties for your controller separated by # (name:type:value) \n'
+          description: colors.green('Write properties for your controller separated by # (name:type:value) \n')
         },
         dependencies: {
-          description: 'Write dependencies for your controller separated by , : ($scope already added) \n'
+          description: colors.green('Write dependencies for your controller separated by , : ($scope already added) \n')
         },
         nameView: {
-          description: 'Name for view: ',
+          description: colors.green('Name for view: '),
+          message: colors.red('Name of view is required'),
           required: true
         },
         frameworkStyle: {
-          description: 'Framework style: \n 1. None 2. Bootstrap 3. Angular Material'
+          description: colors.green('Framework style: \n 1. None 2. Bootstrap 3. Angular Material')
         }
       }
     };

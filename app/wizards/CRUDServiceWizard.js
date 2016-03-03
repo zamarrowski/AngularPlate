@@ -1,5 +1,6 @@
 'use strict';
 let prompt = require('prompt');
+let colors = require("colors/safe");
 let ServiceBuilder = require('./../builders/ServiceBuilder');
 
 class CRUDServiceWizard {
@@ -11,12 +12,14 @@ class CRUDServiceWizard {
     let schema = {
       properties: {
           name: {
-            description: 'Entity name',
-            required: true
+            description: colors.green('Entity name'),
+            required: true,
+            message: colors.red('Entity name is required')
           },
           urlService: {
-            description: 'Url',
-            required: true
+            description: colors.green('Url'),
+            required: true,
+            message: colors.red('Url name is required')
           }
       }
     };

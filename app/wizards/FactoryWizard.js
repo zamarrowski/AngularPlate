@@ -1,5 +1,6 @@
 'use strict';
 let prompt = require('prompt');
+let colors = require("colors/safe");
 let FactoryBuilder = require('./../builders/FactoryBuilder');
 let WizardParser = require('./../common/WizardParser.js');
 
@@ -10,15 +11,15 @@ class FactoryWizard {
     let schema = {
       properties: {
         name: {
-          description: 'Enter a name for your factory',
-          message: 'Name of factory is required',
+          description: colors.green('Enter a name for your factory'),
+          message: colors.green('Name of factory is required'),
           required: true
         },
         properties: {
-          description: 'Write properties for your factory separated by # (name:type:value) \n'
+          description: colors.green('Write properties for your factory separated by # (name:type:value) \n')
         },
         dependencies: {
-          description: 'Write dependencies for your factory separated by ,\n'
+          description: colors.green('Write dependencies for your factory separated by ,\n')
         }
       }
     };

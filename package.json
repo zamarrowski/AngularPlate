@@ -28,5 +28,8 @@
   "bugs": {
     "url": "https://github.com/zamarrowski/AngularPlate/issues"
   },
-  "homepage": "https://github.com/zamarrowski/AngularPlate#readme"
+  "homepage": "https://github.com/zamarrowski/AngularPlate#readme",
+  "dependencies": {
+    "colors": "^1.1.2"
+  }
 }

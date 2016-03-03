@@ -1,6 +1,7 @@
 'use strict';
 
 let prompt = require('prompt');
+let colors = require("colors/safe");
 let FactoryWizard = require('./app/wizards/FactoryWizard.js');
 let ControllerWizard = require('./app/wizards/ControllerWizard.js');
 let CRUDServiceWizard = require('./app/wizards/CRUDServiceWizard.js');
@@ -8,11 +9,13 @@ let CRUDServiceWizard = require('./app/wizards/CRUDServiceWizard.js');
 let schema = {
   properties: {
     create: {
-      description: 'Create: \n 1. Factory \n 2. Controller + View \n 3. CRUD Service',
+      description: colors.red('\nWelcome to Angularplate:\n') + colors.green('What do you create? \n'
+      +' 1. Factory \n 2. Controller + View \n 3. CRUD Service'),
       required: true
     }
   }
 }
+prompt.message = colors.white("AngularPlate!")
 prompt.start();
 
 prompt.get(schema, function (err, result) {
