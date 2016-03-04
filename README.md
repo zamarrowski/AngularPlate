@@ -8,7 +8,9 @@ npm install angularplate
 ```
 
 # Install dependencies
+```
 npm install
+```
 # Run:
 ```
 node app.js
@@ -30,11 +32,11 @@ Now you can create:
 
 ### 1.1 Example:
  ```
- prompt: Enter a name for your factory:  WineFactory
+ AngularPlate!: Enter a name for your factory:  WineFactory
 
- prompt: Write properties for your factory separated by # (name:type:value) :  name:string#price:number
+ AngularPlate!: Write properties for your factory separated by # (name:type:value) :  name:string#price:number
 
- prompt: Write dependencies for your factory separated by , :  AnotherService
+ AngularPlate!: Write dependencies for your factory separated by , :  AnotherService
 ```
   This generate a .js named WineFactory.js:
 ```
@@ -60,13 +62,13 @@ Now you can create:
  * Name of view (Required)
 ### 2.1 Example
 ```
-prompt: Enter a name for your controller:  WineController
+AngularPlate!: Enter a name for your controller:  WineController
 
-prompt: Write properties for your controller separated by # (name:type:value) : name:string#price:number
+AngularPlate!: Write properties for your controller separated by # (name:type:value) : name:string#price:number
 
-prompt: Write dependencies for your controller separated by , ($scope already added): AnotherService
+AngularPlate!: Write dependencies for your controller separated by , ($scope already added): AnotherService
 
-prompt: Name for view: :  WineView
+AngularPlate!: Name for view: :  WineView
 ```
 This generate a .js and .html:
 ```
@@ -92,20 +94,19 @@ This generate a .js and .html:
 
 ### 3.1 Example
 ```
-prompt: Entity name: wine
+AngularPlate!: Entity name: wine
 
-prompt: Url:  http://www.mydomain.com/api/wine
+AngularPlate!: Url:  http://www.mydomain.com/api/wine
 ```
 This generate a .js file:
 ```
 //wineService.js
 (function() {
-  app.factory('WineServices', wineServices);
+  app.service('WineServices', wineServices);
   wineServices.$inject = ['$http', '$q'];
   function wineServices($http, $q) {
-    var self = {};
 
-    self.getWine = function(id) {
+    this.getWine = function(id) {
       var deferred = $q.defer();
       var url = 'http://www.mydomain.com/api/wine/' + id;
 
@@ -116,7 +117,7 @@ This generate a .js file:
       return deferred.promise;
     };
 
-    self.createWine = function(wine) {
+    this.createWine = function(wine) {
       var deferred = $q.defer();
       var url = 'http://www.mydomain.com/api/wine';
 
@@ -127,7 +128,7 @@ This generate a .js file:
       return deferred.promise;
     };
 
-    self.updateWine = function(wine) {
+    this.updateWine = function(wine) {
       var deferred = $q.defer();
       var url = 'http://www.mydomain.com/api/wine';
 
@@ -138,7 +139,7 @@ This generate a .js file:
       return deferred.promise;
     };
 
-    self.deleteWine = function(id) {
+    this.deleteWine = function(id) {
       var deferred = $q.defer();
       var url = 'http://www.mydomain.com/api/wine' + id;
 
@@ -149,7 +150,7 @@ This generate a .js file:
       return deferred.promise;
     };
 
-    return self;
+
  }
 })();
 ```
