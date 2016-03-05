@@ -10,7 +10,7 @@ let schema = {
   properties: {
     create: {
       description: colors.red('\nWelcome to Angularplate:\n') + colors.green('What do you create? \n'
-      +' 1. Factory \n 2. Controller + View \n 3. CRUD Service'),
+      +' 1. Factory \n 2. Controller + View \n 3. CRUD Service \n 0. Exit'),
       required: true
     }
   }
@@ -30,4 +30,9 @@ prompt.get(schema, function (err, result) {
   else if (result.create == 3) {
     CRUDServiceWizard.init();
   }
+  else if (result.create == 0) {
+    console.log('Bye!');
+    process.exit();
+  }
+
 });

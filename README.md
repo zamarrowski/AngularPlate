@@ -60,6 +60,7 @@ Now you can create:
  * Attributes: separated by # (name:type:value). Value is optional. Data types allowed: String, Number, Boolean and Array. Example: firstName:string:sergio#age:number:23#hobbies:array:[football,basket].
  * Dependencies: separated by commas. Example: $http,$q, ($scope already added).
  * Name of view (Required)
+ 
 ### 2.1 Example
 ```
 AngularPlate!: Enter a name for your controller:  WineController
