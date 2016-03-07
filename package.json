@@ -1,7 +1,7 @@
 {
   "name": "angularplate",
   "description": "AngularPlate Scaffolding for AngularJS. Create Controllers, Factories and Views from command line.",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "main": "app.js",
   "directories": {
     "test": "test"
