@@ -7,9 +7,13 @@ class Writer {
   }
 
   writeTemplate(fileName, template) {
-    fs.writeFile(`${fileName}`, template, function (err) {
+
+    if (!fs.existsSync('files')) {
+      fs.mkdirSync('files');
+    }
+    fs.writeFile(`./files/${fileName}`, template, function (err) {
       if (err) return console.log(err);
-      console.log(`${fileName} created!`);
+      console.log(`files/${fileName} created!`);
       return true;
     });
   }
