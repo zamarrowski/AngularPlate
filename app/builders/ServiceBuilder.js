@@ -61,8 +61,7 @@ class ServiceBuilder {
 
       return deferred.promise;
     };
-
-
+    
  }
 })();`;
 

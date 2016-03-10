@@ -58,8 +58,7 @@ describe('ServiceBuilder', function() {
 
       return deferred.promise;
     };
-
-
+    
  }
 })();`);
     });
