@@ -41,7 +41,7 @@ class CompleteCRUDWizard {
       let dependencies = WizardParser.getDependencies(result.dependencies);
       let serviceName = JavaScriptGenerator.getPascalCamelCaseName(result.entityName) + 'Services';
       dependencies.push(serviceName);
-      let controller = new ControllerBuilder(`${result.entityName}Ctrl`, properties, dependencies);
+      let controller = new ControllerBuilder(`${result.entityName}Ctrl`, properties, dependencies, result.entityName);
       controller.createTemplate();
       let view = new ViewBuilder(`${result.entityName}View`, properties, result.frameworkStyle);
       view.createTemplate();

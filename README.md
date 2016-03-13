@@ -263,6 +263,30 @@ This generate 3 files:
   function wineCtrl(WineServices, $scope) {
     $scope.name = null;
     $scope.age = null;
+
+    $scope.getWine = function(id) {
+      WineServices.getWine(id).then(function(response) {
+        console.log(response);
+      });
+    };
+
+    $scope.createWine = function(wine) {
+      WineServices.createWine(wine).then(function(response) {
+        console.log(response);
+      });
+    };
+
+    $scope.updateWine = function(wine) {
+      WineServices.updateWine(wine).then(function(response) {
+        console.log(response);
+      });
+    };
+
+    $scope.deleteWine = function(id) {
+      WineServices.deleteWine(id).then(function(response) {
+        console.log(response);
+      });
+    };
   }
 })();
 

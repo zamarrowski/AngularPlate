@@ -129,4 +129,44 @@ describe('ControllerBuilder', function() {
     });
 
   });
+
+  describe('_getCRUDMethods()', function() {
+    it('Should return crud methods if entityName exists', function() {
+      var properties = [
+        {
+          name: 'age',
+          value: 24,
+          type: 'number',
+          track: null
+        }
+      ];
+      var controller = new ControllerBuilder('controller', properties, [], 'wine');
+      var result = controller._getCRUDMethods('wine');
+      result.should.equal(`
+    $scope.getWine = function(id) {
+      WineServices.getWine(id).then(function(response) {
+        console.log(response);
+      });
+    };
+
+    $scope.createWine = function(wine) {
+      WineServices.createWine(wine).then(function(response) {
+        console.log(response);
+      });
+    };
+
+    $scope.updateWine = function(wine) {
+      WineServices.updateWine(wine).then(function(response) {
+        console.log(response);
+      });
+    };
+
+    $scope.deleteWine = function(id) {
+      WineServices.deleteWine(id).then(function(response) {
+        console.log(response);
+      });
+    };`);
+    });
+  });
+
 });

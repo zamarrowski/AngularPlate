@@ -3,11 +3,12 @@ let writer = require('./../common/Writer.js');
 let JavaScriptGenerator = require('./../common/JavaScriptGenerator.js');
 
 class ControllerBuilder {
-  constructor(controllerName, properties, dependencies) {
+  constructor(controllerName, properties, dependencies, entityName) {
     this.controllerName = controllerName;
     this.propertyList = properties;
     this.dependencies = dependencies;
     this.dependencies.push('$scope');
+    this.entityName = entityName;
   }
 
   createTemplate() {
@@ -20,6 +21,7 @@ class ControllerBuilder {
   ${this.controllerName}.$inject = [${JavaScriptGenerator.getQuotedDependencies(this.dependencies)}];
   function ${this.controllerName}(${JavaScriptGenerator.getDependencies(this.dependencies)}) {
     ${this._getProperties(this.propertyList)}
+    ${this._getCRUDMethods(this.entityName)}
   }
 })();
 `;
@@ -59,6 +61,40 @@ class ControllerBuilder {
       iterations++;
     });
     return properties;
+  }
+
+  _getCRUDMethods(entityName) {
+    let template = '';
+    if (entityName) {
+      let serviceName = `${JavaScriptGenerator.getPascalCamelCaseName(entityName)}Services`;
+      template = `
+    $scope.get${JavaScriptGenerator.getPascalCamelCaseName(entityName)} = function(id) {
+      ${serviceName}.get${JavaScriptGenerator.getPascalCamelCaseName(entityName)}(id).then(function(response) {
+        console.log(response);
+      });
+    };
+
+    $scope.create${JavaScriptGenerator.getPascalCamelCaseName(entityName)} = function(${entityName}) {
+      ${serviceName}.create${JavaScriptGenerator.getPascalCamelCaseName(entityName)}(${entityName}).then(function(response) {
+        console.log(response);
+      });
+    };
+
+    $scope.update${JavaScriptGenerator.getPascalCamelCaseName(entityName)} = function(${entityName}) {
+      ${serviceName}.update${JavaScriptGenerator.getPascalCamelCaseName(entityName)}(${entityName}).then(function(response) {
+        console.log(response);
+      });
+    };
+
+    $scope.delete${JavaScriptGenerator.getPascalCamelCaseName(entityName)} = function(id) {
+      ${serviceName}.delete${JavaScriptGenerator.getPascalCamelCaseName(entityName)}(id).then(function(response) {
+        console.log(response);
+      });
+    };`;
+    }
+
+    return template;
+
   }
 
 }
